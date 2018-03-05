@@ -5,12 +5,19 @@ Item {
     property alias cellColor: rectangle.color
     signal clicked(color cellColor)
 
-    width: 40; height: 25
+    width: 75; height: 75
 
     Rectangle {
         id: rectangle
         border.color: "white"
         anchors.fill: parent
+
+        Text {
+                id: helloText
+                text: "Hello world!"
+                y: 5
+                anchors.horizontalCenter: page.horizontalCenter
+                font.pointSize: 24; font.bold: true
     }
 
     MouseArea {
