@@ -6,7 +6,7 @@ using namespace std;
 #include <QQmlApplicationEngine>
 #include "compteur.h"
 #include <QtQml>
-
+#include <matrice.h>
 
 // On suppose a<b
 int rand_a_b(int a, int b){
@@ -25,7 +25,8 @@ int main(int argc, char *argv[])
 #if defined(Q_OS_WIN)
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
-
+Matrice etat;
+etat.Init(0);
 
     QGuiApplication app(argc, argv);
     Compteur compteur;

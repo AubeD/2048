@@ -4,12 +4,11 @@ import QtQuick.Window 2.2
 Window {
     visible: true
     width: 640
-    height: 480
+    height: 500
     title: qsTr("Hello World")
-
     Rectangle {
         id: page
-        width: 320; height: 480
+        width: 320; height: 500
         color: "lightgray"
         Text {
             id: text1
@@ -39,8 +38,7 @@ Window {
 
         Grid {
             id: colorPicker
-            x: 4; anchors.bottom: page.bottom; anchors.bottomMargin: 4
-            rows: 4; columns: 4; spacing: 4
+            x: 25; y: 170;            rows: 4; columns: 4; spacing: 0
 
             Case { cellColor: "gray"; onClicked: helloText.color = cellColor }
             Case { cellColor: "gray"; onClicked: helloText.color = cellColor }
@@ -75,13 +73,6 @@ Window {
                 button.clicked.connect(buttonClicked)
             }
         }
-
-    MonTexte {
-        id: monTexte
-        x: 504
-        y: 163
-        focus: true
-    }
     StateGroup {
         id: stateGroup
         states: [
@@ -89,7 +80,7 @@ Window {
                 name: "State11"
 
                 PropertyChanges {
-                    target: monTexte
+                    target: case_active
                     x: 25
                     y: 170
                 }
@@ -366,6 +357,12 @@ Window {
                  }
         }
     ]
+    }
+
+Case_active {
+    id: case_active
+    x: 421
+    y: 246
 }
 
 }
