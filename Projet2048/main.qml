@@ -61,6 +61,21 @@ Window {
         }
     }
 
+    function createNewCell()
+        {
+            //Function creates 4 buttons
+            var component = Qt.createComponent("Case_active.qml");
+            for(var i=0;i<4;i++)
+            {
+                var buttonY = i*55; //Button height : 50 + 5 unit margin
+                var button = component.createObject(root,{"x":0,"y":buttonY,"buttonId":i+1});
+
+                //Connect the clicked signal of the newly created button
+                //to the event handler buttonClicked.
+                button.clicked.connect(buttonClicked)
+            }
+        }
+
     MonTexte {
         id: monTexte
         x: 504
