@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>Case.qml</file>
+        <file>MonTexte.qml</file>
     </qresource>
 </RCC>

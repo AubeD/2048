@@ -12,17 +12,12 @@ Item {
         border.color: "white"
         anchors.fill: parent
 
-        Text {
-                id: helloText
-                text: "Hello world!"
-                y: 5
-                anchors.horizontalCenter: page.horizontalCenter
-                font.pointSize: 24; font.bold: true
-    }
+
 
     MouseArea {
         anchors.fill: parent
         onClicked: container.clicked(container.cellColor)
     }
 
+}
 }
