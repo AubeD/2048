@@ -21,6 +21,7 @@ public:
     int rand_a_b(int a,int b);
 
     QString readCompteur();
+    void score();
     QList<QString> readCases();
 
 signals:

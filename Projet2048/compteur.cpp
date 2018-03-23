@@ -37,8 +37,21 @@ QList<QString> Compteur::readCases(){
 
         }
     }
+    score();
     return list;
 
+
+}
+
+void Compteur::score(){
+    int somme=0;
+    for (int i=0;i<4;i++){
+        for (int j=0;j<4;j++){
+            somme=somme+cases[i][j];
+        }
+    }
+    cpt=somme;
+    emit cptChanged();
 }
 
 void Compteur::nouvelle_case(){
