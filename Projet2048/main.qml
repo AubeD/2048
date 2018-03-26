@@ -5,13 +5,12 @@ import QtQuick.Dialogs 1.1
 Window {
     visible: true
     width: 320
-    height: 480
+    height: 536
     title: qsTr("Hello World")
 
     Rectangle {
         id: page
-        width: 320; height: 480
-        color: "lightgray"
+        anchors.fill: parent
         Text {
             id: text1
             text: vueObjectCpt.cptQML
@@ -22,22 +21,23 @@ Window {
             Keys.onPressed: {
                 switch(event.key){
                 case Qt.Key_Up:
+                    vueObjectCpt.savePrecedent();
                     vueObjectCpt.up();
                     vueObjectCpt.nouvelle_case();
                     break;
                 case Qt.Key_Down:
+                    vueObjectCpt.savePrecedent();
                     vueObjectCpt.down();
                     vueObjectCpt.nouvelle_case();
                     break;
                 case Qt.Key_Left:
+                    vueObjectCpt.savePrecedent();
                     vueObjectCpt.left();
                     vueObjectCpt.nouvelle_case();
                     break;
                 case Qt.Key_Right:
+                    vueObjectCpt.savePrecedent();
                     vueObjectCpt.right();
-                    vueObjectCpt.nouvelle_case();
-                    break;
-                case Qt.Key_P:
                     vueObjectCpt.nouvelle_case();
                     break;
                 }
@@ -57,7 +57,7 @@ Window {
 
         Grid {
             id: colorPicker
-            x: 4; y: 170; anchors.bottom: page.bottom; anchors.bottomMargin: 4
+            x: 4; y: 127; anchors.bottom: page.bottom; anchors.bottomMargin: 127
             rows: 4; columns: 4; spacing: 4
 
             Case { name: "11" ; cellColor: vueObjectCpt.couleurQML[0] ; valeur : vueObjectCpt.casesQML[0] }
@@ -77,19 +77,86 @@ Window {
             Case { name: "43" ; cellColor: vueObjectCpt.couleurQML[14]; valeur : vueObjectCpt.casesQML[14] }
             Case { name: "44" ; cellColor: vueObjectCpt.couleurQML[15]; valeur : vueObjectCpt.casesQML[15] }
         }
+
+        Rectangle {
+            id: rectangle
+            x: 64
+            y: 481
+            width: 192
+            height: 36
+            color: "#2ccebc"
+
+            Text {
+                id: text2
+                color: "#ffffff"
+                text: qsTr("Nouvelle Partie")
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignHCenter
+                anchors.fill: parent
+                font.pixelSize: 12
+            }
+
+            MouseArea {
+                id: mouseArea
+                anchors.fill: parent
+                onClicked: vueObjectCpt.nouvelle_partie();
+            }
+        }
+
+        Text {
+            id: text3
+            x: 141
+            y: 10
+            text: qsTr("Score :")
+            font.pixelSize: 12
+        }
+    }
+
+    Rectangle {
+        id: rectangle1
+        x: 64
+        y: 434
+        width: 192
+        height: 36
+        color: "#2ccebc"
+        Text {
+            id: text4
+            color: "#ffffff"
+            text: qsTr("Retour")
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
+            anchors.fill: parent
+            font.pixelSize: 12
+        }
+
+        Image {
+            id: image
+            x: 8
+            y: 4
+            width: 40
+            height: 28
+            source: "qrc:fleche.png"
+        }
+
+        MouseArea {
+            id: mouseArea1
+            anchors.fill: parent
+            onClicked: vueObjectCpt.retour();
+        }
+
     }
 
     function createNewCell()
-        {
+    {
 
-            var component = Qt.createComponent("Case_active.qml");
-            var buttonY = 55; //Button height : 50 + 5 unit margin
-            var button = component.createObject(root,{"x":0,"y":buttonY,"buttonId":1});
-                //Connect the clicked signal of the newly created button
-                //to the event handler buttonClicked.
-            button.clicked.connect(buttonClicked)
+        var component = Qt.createComponent("Case_active.qml");
+        var buttonY = 55; //Button height : 50 + 5 unit margin
+        var button = component.createObject(root,{"x":0,"y":buttonY,"buttonId":1});
+        //Connect the clicked signal of the newly created button
+        //to the event handler buttonClicked.
+        button.clicked.connect(buttonClicked)
 
-        }
+    }
     StateGroup {
         id: stateGroup
         states: [
@@ -238,142 +305,144 @@ Window {
                 }
             }
         ]
-    transitions: [
-        Transition {
-            from: "*"; to: "State11"
-            NumberAnimation {
-                easing.type: Easing.InOutQuad
-                properties: "x,y";
-                duration: 1000
-            }
-        },
-        Transition {
-            from: "*"; to: "State12"
-            NumberAnimation {
+        transitions: [
+            Transition {
+                from: "*"; to: "State11"
+                NumberAnimation {
+                    easing.type: Easing.InOutQuad
+                    properties: "x,y";
+                    duration: 1000
+                }
+            },
+            Transition {
+                from: "*"; to: "State12"
+                NumberAnimation {
                     properties: "x,y";
                     easing.type: Easing.InOutQuad;
                     duration: 1000
-            }
-        },
-        Transition {
-            from: "*"; to: "State13"
-            NumberAnimation {
+                }
+            },
+            Transition {
+                from: "*"; to: "State13"
+                NumberAnimation {
                     properties: "x,y";
                     easing.type: Easing.InOutQuad;
                     duration: 1000
-            }
-        },
-        Transition {
-            from: "*"; to: "State14"
-            NumberAnimation {
+                }
+            },
+            Transition {
+                from: "*"; to: "State14"
+                NumberAnimation {
                     properties: "x,y";
                     easing.type: Easing.InOutQuad;
                     duration: 1000
-            }
-        },
-        Transition {
-            from: "*"; to: "State21"
-            NumberAnimation {
+                }
+            },
+            Transition {
+                from: "*"; to: "State21"
+                NumberAnimation {
                     properties: "x,y";
                     easing.type: Easing.InOutQuad;
                     duration: 1000
-            }
-        },
-        Transition {
-            from: "*"; to: "State22"
-            NumberAnimation {
+                }
+            },
+            Transition {
+                from: "*"; to: "State22"
+                NumberAnimation {
                     properties: "x,y";
                     easing.type: Easing.InOutQuad;
                     duration: 1000
-            }
-        },
-        Transition {
-            from: "*"; to: "State23"
-            NumberAnimation {
+                }
+            },
+            Transition {
+                from: "*"; to: "State23"
+                NumberAnimation {
                     properties: "x,y";
                     easing.type: Easing.InOutQuad;
                     duration: 1000
-            }
-        },
-        Transition {
-            from: "*"; to: "State24"
-            NumberAnimation {
+                }
+            },
+            Transition {
+                from: "*"; to: "State24"
+                NumberAnimation {
                     properties: "x,y";
                     easing.type: Easing.InOutQuad;
                     duration: 1000
-            }
-        },
-        Transition {
-            from: "*"; to: "State31"
-            NumberAnimation {
+                }
+            },
+            Transition {
+                from: "*"; to: "State31"
+                NumberAnimation {
                     properties: "x,y";
                     easing.type: Easing.InOutQuad;
                     duration: 1000
-            }
-        },
-        Transition {
-            from: "*"; to: "State32"
-            NumberAnimation {
+                }
+            },
+            Transition {
+                from: "*"; to: "State32"
+                NumberAnimation {
                     properties: "x,y";
                     easing.type: Easing.InOutQuad;
                     duration: 1000
-            }
-        },
-        Transition {
-            from: "*"; to: "State33"
-            NumberAnimation {
+                }
+            },
+            Transition {
+                from: "*"; to: "State33"
+                NumberAnimation {
                     properties: "x,y";
                     easing.type: Easing.InOutQuad;
                     duration: 1000
-            }
-        },
-        Transition {
-            from: "*"; to: "State34"
-            NumberAnimation {
+                }
+            },
+            Transition {
+                from: "*"; to: "State34"
+                NumberAnimation {
                     properties: "x,y";
                     easing.type: Easing.InOutQuad;
                     duration: 1000
-            }
-        },
-        Transition {
-            from: "*"; to: "State41"
-            NumberAnimation {
+                }
+            },
+            Transition {
+                from: "*"; to: "State41"
+                NumberAnimation {
                     properties: "x,y";
                     easing.type: Easing.InOutQuad;
                     duration: 1000
-            }
-        },
-        Transition {
-            from: "*"; to: "State42"
-            NumberAnimation {
+                }
+            },
+            Transition {
+                from: "*"; to: "State42"
+                NumberAnimation {
                     properties: "x,y";
                     easing.type: Easing.InOutQuad;
                     duration: 1000
-            }
-        },
-        Transition {
-            from: "*"; to: "State43"
-            NumberAnimation {
+                }
+            },
+            Transition {
+                from: "*"; to: "State43"
+                NumberAnimation {
                     properties: "x,y";
                     easing.type: Easing.InOutQuad;
                     duration: 1000
-            }
-        },
-        Transition {
-            from: "*"; to: "State44"
-            NumberAnimation {
+                }
+            },
+            Transition {
+                from: "*"; to: "State44"
+                NumberAnimation {
                     properties: "x,y";
                     easing.type: Easing.InOutQuad;
                     duration: 1000
+                }
+            },
+            Transition {
+                NumberAnimation {
+                    properties: "x,y";
+                    duration: 200
+                }
             }
-        },
-        Transition {
-                 NumberAnimation {
-                     properties: "x,y";
-                     duration: 200
-                 }
-        }
-    ]
-}
+        ]
+    }
+
+
 
 }

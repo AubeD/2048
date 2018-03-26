@@ -20,6 +20,8 @@ public:
     Q_INVOKABLE void right();
     Q_INVOKABLE void left();
     Q_INVOKABLE void nouvelle_partie();
+    Q_INVOKABLE void retour();
+    Q_INVOKABLE void savePrecedent();
 
     int rand_a_b(int a,int b);
 
@@ -42,6 +44,7 @@ private:
     int cpt;
     int cases[4][4];
     bool dialog_visible;
+    int precedent[4][4];
 };
 
 #endif // COMPTEUR_H

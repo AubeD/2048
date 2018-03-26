@@ -298,6 +298,22 @@ void Compteur::right(){
     }
     emit casesChanged();
 }
+void Compteur::retour(){
+    for (int i=0;i<4;i++){
+        for (int j=0;j<4;j++){
+            cases[i][j]=precedent[i][j];
+        }
+    }
+    emit casesChanged();
+}
+
+void Compteur::savePrecedent(){
+    for (int i=0;i<4;i++){
+        for (int j=0;j<4;j++){
+            precedent[i][j]=cases[i][j];
+        }
+    }
+}
 
 // On suppose a<b
 int Compteur::rand_a_b(int a, int b){
