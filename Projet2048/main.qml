@@ -1,5 +1,6 @@
 import QtQuick 2.9
 import QtQuick.Window 2.2
+import QtQuick.Dialogs 1.1
 
 Window {
     visible: true
@@ -43,28 +44,38 @@ Window {
             }
         }
 
+        MessageDialog {
+            id: messageDialog
+            title: "Game over"
+            text: "Vous avez perdu."
+            onAccepted: {
+                vueObjectCpt.nouvelle_partie();
+            }
+            visible: vueObjectCpt.dialog_visibleQML
+        }
+
 
         Grid {
             id: colorPicker
             x: 4; y: 170; anchors.bottom: page.bottom; anchors.bottomMargin: 4
             rows: 4; columns: 4; spacing: 4
 
-            Case { name: "11" ; cellColor: "gray"; valeur : vueObjectCpt.casesQML[0] }
-            Case { name: "12" ; cellColor: "gray"; valeur : vueObjectCpt.casesQML[1] }
-            Case { name: "13" ; cellColor: "gray"; valeur : vueObjectCpt.casesQML[2] }
-            Case { name: "14" ; cellColor: "gray"; valeur : vueObjectCpt.casesQML[3] }
-            Case { name: "21" ; cellColor: "gray"; valeur : vueObjectCpt.casesQML[4] }
-            Case { name: "22" ; cellColor: "gray"; valeur : vueObjectCpt.casesQML[5] }
-            Case { name: "23" ; cellColor: "gray"; valeur : vueObjectCpt.casesQML[6] }
-            Case { name: "24" ; cellColor: "gray"; valeur : vueObjectCpt.casesQML[7] }
-            Case { name: "31" ; cellColor: "gray"; valeur : vueObjectCpt.casesQML[8] }
-            Case { name: "32" ; cellColor: "gray"; valeur : vueObjectCpt.casesQML[9] }
-            Case { name: "33" ; cellColor: "gray"; valeur : vueObjectCpt.casesQML[10] }
-            Case { name: "34" ; cellColor: "gray"; valeur : vueObjectCpt.casesQML[11] }
-            Case { name: "41" ; cellColor: "gray"; valeur : vueObjectCpt.casesQML[12] }
-            Case { name: "42" ; cellColor: "gray"; valeur : vueObjectCpt.casesQML[13] }
-            Case { name: "43" ; cellColor: "gray"; valeur : vueObjectCpt.casesQML[14] }
-            Case { name: "44" ; cellColor: "gray"; valeur : vueObjectCpt.casesQML[15] }
+            Case { name: "11" ; cellColor: vueObjectCpt.couleurQML[0] ; valeur : vueObjectCpt.casesQML[0] }
+            Case { name: "12" ; cellColor: vueObjectCpt.couleurQML[1]; valeur : vueObjectCpt.casesQML[1] }
+            Case { name: "13" ; cellColor: vueObjectCpt.couleurQML[2]; valeur : vueObjectCpt.casesQML[2] }
+            Case { name: "14" ; cellColor: vueObjectCpt.couleurQML[3]; valeur : vueObjectCpt.casesQML[3] }
+            Case { name: "21" ; cellColor: vueObjectCpt.couleurQML[4]; valeur : vueObjectCpt.casesQML[4] }
+            Case { name: "22" ; cellColor: vueObjectCpt.couleurQML[5]; valeur : vueObjectCpt.casesQML[5] }
+            Case { name: "23" ; cellColor: vueObjectCpt.couleurQML[6]; valeur : vueObjectCpt.casesQML[6] }
+            Case { name: "24" ; cellColor: vueObjectCpt.couleurQML[7]; valeur : vueObjectCpt.casesQML[7] }
+            Case { name: "31" ; cellColor: vueObjectCpt.couleurQML[8]; valeur : vueObjectCpt.casesQML[8] }
+            Case { name: "32" ; cellColor: vueObjectCpt.couleurQML[9]; valeur : vueObjectCpt.casesQML[9] }
+            Case { name: "33" ; cellColor: vueObjectCpt.couleurQML[10]; valeur : vueObjectCpt.casesQML[10] }
+            Case { name: "34" ; cellColor: vueObjectCpt.couleurQML[11]; valeur : vueObjectCpt.casesQML[11] }
+            Case { name: "41" ; cellColor: vueObjectCpt.couleurQML[12]; valeur : vueObjectCpt.casesQML[12] }
+            Case { name: "42" ; cellColor: vueObjectCpt.couleurQML[13]; valeur : vueObjectCpt.casesQML[13] }
+            Case { name: "43" ; cellColor: vueObjectCpt.couleurQML[14]; valeur : vueObjectCpt.casesQML[14] }
+            Case { name: "44" ; cellColor: vueObjectCpt.couleurQML[15]; valeur : vueObjectCpt.casesQML[15] }
         }
     }
 
