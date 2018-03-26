@@ -13,7 +13,7 @@ Window {
         anchors.fill: parent
         Text {
             id: text1
-            text: vueObjectCpt.cptQML
+            text: vueObjectCpt.cptQML + "  /  " + vueObjectCpt.stQML
             y: 30
             anchors.horizontalCenter: page.horizontalCenter
             font.pointSize: 24; font.bold: true
@@ -107,7 +107,7 @@ Window {
             id: text3
             x: 141
             y: 10
-            text: qsTr("Score :")
+            text: qsTr("Score : / Record :")
             font.pixelSize: 12
         }
     }

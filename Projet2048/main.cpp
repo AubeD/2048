@@ -23,7 +23,6 @@ int main(int argc, char *argv[])
     Compteur compteur;
 
 
-
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("vueObjectCpt",&compteur);
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));

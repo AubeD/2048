@@ -5,6 +5,7 @@
 
 Compteur::Compteur(QObject *parent): QObject(parent) {
     cpt=0;
+    st=0;
     emit cptChanged();
     for(int i=0; i<4; i++)
         for(int j=0; j<4; j++)
@@ -28,7 +29,10 @@ QString Compteur::readCompteur(){
     return QString::number(cpt);
 
 }
+QString Compteur::readScoretotal(){
+    return QString::number(st);
 
+}
 bool Compteur::readDialog_visible(){
     return dialog_visible;
 
@@ -133,7 +137,10 @@ void Compteur::score(){
         }
     }
     cpt=somme;
+    if (st <= cpt){
+        st= cpt;}
     emit cptChanged();
+    emit stChanged();
     emit colorChanged();
 }
 
