@@ -6,7 +6,7 @@ Window {
     visible: true
     width: 320
     height: 536
-    title: qsTr("Hello World")
+    title: qsTr("2048")
 
     Rectangle {
         id: page
@@ -105,9 +105,12 @@ Window {
 
         Text {
             id: text3
-            x: 141
+            x: 0
             y: 10
-            text: qsTr("Score : / Record :")
+            width: 320
+            height: 14
+            text: qsTr("Score :    /    Record :")
+            horizontalAlignment: Text.AlignHCenter
             font.pixelSize: 12
         }
     }
