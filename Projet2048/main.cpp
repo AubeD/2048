@@ -1,7 +1,16 @@
+#include <iostream>
+
+using namespace std;
+
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include "compteur.h"
 #include <QtQml>
+
+
+
+
+
 
 int main(int argc, char *argv[])
 {
@@ -9,8 +18,10 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
 
+
     QGuiApplication app(argc, argv);
     Compteur compteur;
+
 
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("vueObjectCpt",&compteur);
@@ -20,3 +31,5 @@ int main(int argc, char *argv[])
 
     return app.exec();
 }
+
+
