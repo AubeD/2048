@@ -16,6 +16,7 @@ Nous avons ajouter des couleurs différentes pour chaque valeur que peut prendre
 Le score actuel est affiché au dessus de la grille ainsi que le meilleur score juste à côté (ce meilleur score est remis à 0 à chaque lancement du jeu, pour voir une différence avec le score actuel il faut donc avoir fait au moins une autre partie avant).
 En dessous de la grille il y a un bouton retour qui permet de revenir à l'état précédent de la grille en cas d'erreur. Toutefois cela ne permet de revenir qu'une seule fois en arrière.
 Il y a également un bouton nouvelle partie permettant de redémarrer le jeu à tout moment.
+Lorsque la grille est pleine, un message de game over s'affiche, appuyer sur ok démarre une nouvelle partie.
 
 
 Les autres branches que le master sont des branches pour tester des animations tel que le déplacement des cases. Ces tests n'ont pas aboutis.
